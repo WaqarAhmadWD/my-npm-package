@@ -6,16 +6,6 @@ export const settings = (settings = null) => {
 
   settingsVar = settings;
 };
-
-// export const helloWorld = () => {
-//   return (
-//     <div>
-//       <h1>Hello, World!</h1>
-//       <p>This is a test component.</p>
-//       <p>Settings: {settingsVar}</p>
-//     </div>
-//   );
-// };
 export const variable = "test completed";
 
 settings("1");
