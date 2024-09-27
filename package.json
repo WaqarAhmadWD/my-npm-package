@@ -8,6 +8,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js"
   },
+  "files": [
+    "css/*",
+    "scripts/*.js",
+    "*.d.ts",
+    "*.css",
+    "*.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/WaqarAhmadWD/my-npm-package.git"
