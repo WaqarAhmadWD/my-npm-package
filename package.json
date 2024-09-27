@@ -1,0 +1,26 @@
+{
+  "name": "dashboard-ui-builder",
+  "version": "1.0.0",
+  "description": "it is fully customizable ui library for large and fully customizable dashboards and components.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/WaqarAhmadWD/my-npm-package.git"
+  },
+  "keywords": [
+    "dashboard",
+    "ui-library",
+    "customizable-ui"
+  ],
+  "author": "waqarahmad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WaqarAhmadWD/my-npm-package/issues"
+  },
+  "homepage": "https://github.com/WaqarAhmadWD/my-npm-package#readme"
+}

@@ -1,0 +1,83 @@
+:root {
+  /* Define CSS Variables */
+  --font-family: "Helvetica, Arial, sans-serif";
+  --font-size-base: 16px;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.75rem;
+  --font-size-body: 1rem;
+
+  --color-primary: #3498db;
+  --color-secondary: #2ecc71;
+  --color-text: #333;
+  --color-background: #f4f4f4;
+  --color-border: #ddd;
+
+  --padding-base: 16px;
+  --margin-base: 16px;
+  --line-height: 1.5;
+}
+
+/* Global Styles */
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: var(--line-height);
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-primary);
+  margin: 0 0 var(--margin-base);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+p {
+  font-size: var(--font-size-body);
+  margin-bottom: var(--margin-base);
+}
+
+/* UI Component Base Styles */
+.ui-component {
+  background-color: #fff;
+  border: 1px solid var(--color-border);
+  padding: var(--padding-base);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Example Component */
+.ui-button {
+  padding: 0.5em 1em;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ui-button:hover {
+  background-color: darken(var(--color-primary), 10%);
+}
