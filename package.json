@@ -13,7 +13,8 @@
     "scripts/*.js",
     "*.d.ts",
     "*.css",
-    "*.js"
+    "*.js",
+    "index.js"
   ],
   "repository": {
     "type": "git",
@@ -29,5 +30,9 @@
   "bugs": {
     "url": "https://github.com/WaqarAhmadWD/my-npm-package/issues"
   },
-  "homepage": "https://github.com/WaqarAhmadWD/my-npm-package#readme"
+  "homepage": "https://github.com/WaqarAhmadWD/my-npm-package#readme",
+  "dependencies": {
+    "vee-validate": "^4.13.2",
+    "yup": "^1.4.0"
+  }
 }

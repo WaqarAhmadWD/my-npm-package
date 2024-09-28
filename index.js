@@ -1,12 +1,19 @@
-export let settingsVar = null;
-export const settings = (settings = null) => {
-  if (!settings) {
+import "./global.css";
+
+export const setting = (setting = null) => {
+  if (!setting) {
     return;
   }
-
-  settingsVar = settings;
+  // LTR to RTL
+  document.body.classList.remove("ltr", "rtl");
+  void document.body.offsetWidth;
+  // Add new locale class
+  if (setting?.rtl) {
+    document.body.classList.add("rtl");
+  } else {
+    document.body.classList.add("ltr");
+  }
 };
-export const variable = "test completed";
 
-settings("1");
-console.log(variable);
+// import * from "/dynamic_components";
+export * from "./components";

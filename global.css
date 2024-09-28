@@ -81,3 +81,27 @@ p {
 .ui-button:hover {
   background-color: darken(var(--custom-color-primary), 10%);
 }
+
+.rtl {
+  text-align: right;
+  direction: rtl;
+  animation: ani 1s;
+}
+.ltr {
+  text-align: left;
+  direction: ltr;
+  animation: ani 1s;
+}
+
+@keyframes ani {
+  from {
+    opacity: 0;
+    scale: 1.1;
+    transform: translateY(5rem);
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0px);
+  }
+}
