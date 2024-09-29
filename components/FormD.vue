@@ -1,14 +1,11 @@
 <!-- Your existing template -->
 <template>
-  <Form
-    v-if="schema"
-    @submit="submitForm"
+  <div
     class="rounded-lg border border-default-200 p-6"
     :class="{
       'w-1/2': custom_class === 0,
       'w-full': custom_class === 1,
     }"
-    :validation-schema="schema"
   >
     <div
       :class="{
@@ -24,7 +21,7 @@
         >
 
         <!-- Textarea Field -->
-        <Field
+        <input
           v-if="field.type === 'textarea'"
           :id="field.name"
           v-model="formModel[field.name]"
@@ -36,12 +33,11 @@
         />
 
         <!-- Regular Select Field -->
-        <Field
+        <select
           v-if="field.type === 'select' && field.type !== 'searchableSelect'"
           class="rounded-lg border border-default-200 px-4 py-2.5 dark:bg-default-50 w-full"
           v-model="formModel[field.name]"
           :placeholder="field.placeholder"
-          as="select"
           :name="field.name"
         >
           <option
@@ -51,10 +47,10 @@
           >
             {{ option.name }}
           </option>
-        </Field>
+        </select>
 
         <!-- Text or Email Field -->
-        <Field
+        <input
           v-if="
             field.type === 'text' ||
             field.type === 'email' ||
@@ -94,7 +90,7 @@
           class="rounded-lg border border-default-200 outline-none dark:bg-default-50 px-4 py-1 w-full flex justify-between items-center"
           v-if="field.type === 'password'"
         >
-          <Field
+          <input
             :id="field.name"
             v-model="formModel[field.name]"
             :type="field.showPass ? 'text' : 'password'"
@@ -103,27 +99,111 @@
             :class="field.class"
             :name="field.name"
           />
-          <AkEyeSlashed
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
             class="cursor-pointer w-5 h-5"
             v-if="field.showPass"
             @click="togglePass(index)"
-          />
-          <AkEyeOpen
-            class="cursor-pointer w-5 h-5"
+          >
+            <path
+              d="M2 2L22 22"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.71277 6.7226C3.66479 8.79527 2 12 2 12C2 12 5.63636 19 12 19C14.0503 19 15.8174 18.2734 17.2711 17.2884M11 5.05822C11.3254 5.02013 11.6588 5 12 5C18.3636 5 22 12 22 12C22 12 21.3082 13.3317 20 14.8335"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M14 14.2362C13.4692 14.7112 12.7684 15.0001 12 15.0001C10.3431 15.0001 9 13.657 9 12.0001C9 11.1764 9.33193 10.4303 9.86932 9.88818"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            version="1.1"
+            width="20"
+            height="20"
+            viewBox="0 0 256 256"
+            xml:space="preserve"
+            class="cursor-pointer"
             v-if="!field.showPass"
             @click="togglePass(index)"
-          />
+          >
+            <defs></defs>
+            <g
+              style="
+                stroke: none;
+                stroke-width: 0;
+                stroke-dasharray: none;
+                stroke-linecap: butt;
+                stroke-linejoin: miter;
+                stroke-miterlimit: 10;
+                fill: none;
+                fill-rule: nonzero;
+                opacity: 1;
+              "
+              transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
+            >
+              <path
+                d="M 45 73.264 c -14.869 0 -29.775 -8.864 -44.307 -26.346 c -0.924 -1.112 -0.924 -2.724 0 -3.836 C 15.225 25.601 30.131 16.737 45 16.737 c 14.868 0 29.775 8.864 44.307 26.345 c 0.925 1.112 0.925 2.724 0 3.836 C 74.775 64.399 59.868 73.264 45 73.264 z M 6.934 45 C 19.73 59.776 32.528 67.264 45 67.264 c 12.473 0 25.27 -7.487 38.066 -22.264 C 70.27 30.224 57.473 22.737 45 22.737 C 32.528 22.737 19.73 30.224 6.934 45 z"
+                style="
+                  stroke: none;
+                  stroke-width: 1;
+                  stroke-dasharray: none;
+                  stroke-linecap: butt;
+                  stroke-linejoin: miter;
+                  stroke-miterlimit: 10;
+                  fill: rgb(0, 0, 0);
+                  fill-rule: nonzero;
+                  opacity: 1;
+                "
+                transform=" matrix(1 0 0 1 0 0) "
+                stroke-linecap="round"
+              />
+              <path
+                d="M 45 62 c -9.374 0 -17 -7.626 -17 -17 s 7.626 -17 17 -17 s 17 7.626 17 17 S 54.374 62 45 62 z M 45 34 c -6.065 0 -11 4.935 -11 11 s 4.935 11 11 11 s 11 -4.935 11 -11 S 51.065 34 45 34 z"
+                style="
+                  stroke: none;
+                  stroke-width: 1;
+                  stroke-dasharray: none;
+                  stroke-linecap: butt;
+                  stroke-linejoin: miter;
+                  stroke-miterlimit: 10;
+                  fill: rgb(0, 0, 0);
+                  fill-rule: nonzero;
+                  opacity: 1;
+                "
+                transform=" matrix(1 0 0 1 0 0) "
+                stroke-linecap="round"
+              />
+            </g>
+          </svg>
         </div>
-
-        <!-- Error Message -->
-        <ErrorMessage class="text-red-500" :name="field.name" />
+        <div v-if="field?.error" class="blood">
+          {{ field.error }}
+        </div>
       </div>
     </div>
 
     <!-- Submit Button -->
     <div class="w-full flex justify-end">
       <button
-        type="submit"
+        @click="submitForm"
         class="mt-4 flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-primary"
       >
         <svg
@@ -146,16 +226,12 @@
         Submit
       </button>
     </div>
-  </Form>
+  </div>
 </template>
 
 <script setup>
-import { toRefs, reactive, onMounted, ref } from "vue";
-import { Form, Field, ErrorMessage } from "vee-validate";
-import * as yup from "yup";
-
-import { AkEyeSlashed, AkEyeOpen } from "@kalimahapps/vue-icons";
-
+import { reactive, onMounted, ref } from "vue";
+// props for the component
 const props = defineProps({
   fields: {
     type: Array,
@@ -173,8 +249,8 @@ const props = defineProps({
 
 const filter = ref();
 const formModel = reactive({ ...props.model });
-const schema = ref();
 
+// toggle password field from text to password and password to text
 const togglePass = (index) => {
   const field = filter.value[index];
   if (field && field.type === "password") {
@@ -183,6 +259,7 @@ const togglePass = (index) => {
 };
 
 onMounted(async () => {
+  // Filter fields based on custom class if provided
   filter.value = props.fields.map((field) => {
     if (field.type === "password") {
       field.showPass = field.showPass || false;
@@ -195,28 +272,80 @@ onMounted(async () => {
   if (selectField && selectField.options.length > 0) {
     formModel[selectField.name] = selectField.options[0].name;
   }
-
-  // Create validation schema using Yup
-  schema.value = await yup.object(
-    props.fields.reduce((result, field) => {
-      let validationRule = yup.mixed();
-      if (field.schema) {
-        validationRule = eval(field.schema);
-      } else if (field.type === "checkbox") {
-        validationRule = yup
-          .boolean()
-          .oneOf([true], `${field.label} must be accepted`);
-      }
-      result[field.name] = validationRule;
-      return result;
-    }, {})
-  );
 });
-
 const emit = defineEmits(["submit"]);
-const submitForm = () => {
-  emit("submit", formModel);
+const submitForm = async () => {
+  // Validate fields and emit event with form data if valid
+  filter.value = await filter.value.map((element) => {
+    const value = formModel[element.name];
+
+    // Required field validation
+    if (element.validation?.required && !value) {
+      return { ...element, error: `${element.name} is required` };
+
+      // String validation
+    } else if (element.validation?.string && typeof value !== "string") {
+      return { ...element, error: `${element.name} must be a string` };
+
+      // Number validation
+    } else if (element.validation?.number && typeof value !== "number") {
+      return { ...element, error: `${element.name} must be a number` };
+
+      // Minimum length validation
+    } else if (
+      element.validation?.min &&
+      value.length < element.validation.min
+    ) {
+      return {
+        ...element,
+        error: `${element.name} must be greater than ${element.validation.min} characters`,
+      };
+
+      // Maximum length validation
+    } else if (
+      element.validation?.max &&
+      value.length > element.validation.max
+    ) {
+      return {
+        ...element,
+        error: `${element.name} must be smaller than ${element.validation.max} characters`,
+      };
+
+      // Email validation (simple regex)
+    } else if (element.validation?.email) {
+      if (typeof value === "string") {
+        // Ensure value is a string
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(value)) {
+          return {
+            ...element,
+            error: `Invalid email format for ${element.name}`,
+          };
+        } else {
+          return { ...element, error: null };
+        }
+      }
+    } else {
+      // No validation errors
+      return { ...element, error: null };
+    }
+
+    return element;
+  });
+
+  // Check if any field has errors
+  const noErrors = filter.value.every((element) => !element.error);
+
+  // Submit the form if there are no errors
+  if (noErrors) {
+    emit("submit", formModel);
+  }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.blood {
+  color: red;
+  font-size: 12px;
+}
+</style>
