@@ -31,8 +31,12 @@
     "url": "https://github.com/WaqarAhmadWD/my-npm-package/issues"
   },
   "homepage": "https://github.com/WaqarAhmadWD/my-npm-package#readme",
-  "dependencies": {
+  "peerDependencies": {
+    "@bhplugin/vue3-datatable": "^2.0.0",
+    "@kalimahapps/vue-icons": "^1.7.1",
     "vee-validate": "^4.13.2",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
   }
 }

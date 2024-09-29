@@ -103,100 +103,16 @@
             :class="field.class"
             :name="field.name"
           />
-          <svg
-            width="800px"
-            height="800px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <AkEyeSlashed
             class="cursor-pointer w-5 h-5"
             v-if="field.showPass"
             @click="togglePass(index)"
-          >
-            <path
-              d="M2 2L22 22"
-              stroke="#000000"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M6.71277 6.7226C3.66479 8.79527 2 12 2 12C2 12 5.63636 19 12 19C14.0503 19 15.8174 18.2734 17.2711 17.2884M11 5.05822C11.3254 5.02013 11.6588 5 12 5C18.3636 5 22 12 22 12C22 12 21.3082 13.3317 20 14.8335"
-              stroke="#000000"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M14 14.2362C13.4692 14.7112 12.7684 15.0001 12 15.0001C10.3431 15.0001 9 13.657 9 12.0001C9 11.1764 9.33193 10.4303 9.86932 9.88818"
-              stroke="#000000"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            version="1.1"
-            width="256"
-            height="256"
-            viewBox="0 0 256 256"
-            xml:space="preserve"
+          />
+          <AkEyeOpen
             class="cursor-pointer w-5 h-5"
             v-if="!field.showPass"
             @click="togglePass(index)"
-          >
-            <defs></defs>
-            <g
-              style="
-                stroke: none;
-                stroke-width: 0;
-                stroke-dasharray: none;
-                stroke-linecap: butt;
-                stroke-linejoin: miter;
-                stroke-miterlimit: 10;
-                fill: none;
-                fill-rule: nonzero;
-                opacity: 1;
-              "
-              transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
-            >
-              <path
-                d="M 45 73.264 c -14.869 0 -29.775 -8.864 -44.307 -26.346 c -0.924 -1.112 -0.924 -2.724 0 -3.836 C 15.225 25.601 30.131 16.737 45 16.737 c 14.868 0 29.775 8.864 44.307 26.345 c 0.925 1.112 0.925 2.724 0 3.836 C 74.775 64.399 59.868 73.264 45 73.264 z M 6.934 45 C 19.73 59.776 32.528 67.264 45 67.264 c 12.473 0 25.27 -7.487 38.066 -22.264 C 70.27 30.224 57.473 22.737 45 22.737 C 32.528 22.737 19.73 30.224 6.934 45 z"
-                style="
-                  stroke: none;
-                  stroke-width: 1;
-                  stroke-dasharray: none;
-                  stroke-linecap: butt;
-                  stroke-linejoin: miter;
-                  stroke-miterlimit: 10;
-                  fill: rgb(0, 0, 0);
-                  fill-rule: nonzero;
-                  opacity: 1;
-                "
-                transform=" matrix(1 0 0 1 0 0) "
-                stroke-linecap="round"
-              />
-              <path
-                d="M 45 62 c -9.374 0 -17 -7.626 -17 -17 s 7.626 -17 17 -17 s 17 7.626 17 17 S 54.374 62 45 62 z M 45 34 c -6.065 0 -11 4.935 -11 11 s 4.935 11 11 11 s 11 -4.935 11 -11 S 51.065 34 45 34 z"
-                style="
-                  stroke: none;
-                  stroke-width: 1;
-                  stroke-dasharray: none;
-                  stroke-linecap: butt;
-                  stroke-linejoin: miter;
-                  stroke-miterlimit: 10;
-                  fill: rgb(0, 0, 0);
-                  fill-rule: nonzero;
-                  opacity: 1;
-                "
-                transform=" matrix(1 0 0 1 0 0) "
-                stroke-linecap="round"
-              />
-            </g>
-          </svg>
+          />
         </div>
 
         <!-- Error Message -->
@@ -238,6 +154,8 @@ import { toRefs, reactive, onMounted, ref } from "vue";
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 
+import { AkEyeSlashed, AkEyeOpen } from "@kalimahapps/vue-icons";
+
 const props = defineProps({
   fields: {
     type: Array,
@@ -269,16 +187,11 @@ onMounted(async () => {
     if (field.type === "password") {
       field.showPass = field.showPass || false;
     }
-    if (field.type === "searchableSelect") {
-      field.options = field.options || [];
-    }
     return field;
   });
 
   // Initialize the first option as default for select fields
-  const selectField = props.fields.find(
-    (field) => field.type === "select" || field.type === "searchableSelect"
-  );
+  const selectField = props.fields.find((field) => field.type === "select");
   if (selectField && selectField.options.length > 0) {
     formModel[selectField.name] = selectField.options[0].name;
   }
@@ -302,21 +215,7 @@ onMounted(async () => {
 
 const emit = defineEmits(["submit"]);
 const submitForm = () => {
-  const isValid = props.fields.every((field) => {
-    if (field.type === "searchableSelect") {
-      // Check if the corresponding model field is filled
-      return !!formModel[field.name];
-    }
-    // For other field types, just return true (or apply any other checks if needed)
-    return true;
-  });
-
-  if (isValid) {
-    emit("submit", formModel);
-  } else {
-    // Handle the case when validation fails (e.g., show an error message)
-    console.log("Validation failed: Some searchableSelect fields are empty.");
-  }
+  emit("submit", formModel);
 };
 </script>
 

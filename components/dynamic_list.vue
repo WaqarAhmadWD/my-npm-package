@@ -83,7 +83,6 @@ import { AkEyeOpen, AkPencil, AkTrashCan } from "@kalimahapps/vue-icons";
 import Vue3Datatable from "@bhplugin/vue3-datatable";
 import "@bhplugin/vue3-datatable/dist/style.css";
 import { RouterLink } from "vue-router";
-import clsx from "clsx";
 
 const loading = ref(true);
 const total_rows = ref(0);
