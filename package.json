@@ -1,5 +1,5 @@
 {
-  "name": "dashboard-ui-builder",
+  "name": "vue3-dashboard-builder",
   "version": "1.0.0",
   "description": "it is fully customizable ui library for large and fully customizable dashboards and components.",
   "main": "index.js",
@@ -14,7 +14,8 @@
     "*.d.ts",
     "*.css",
     "*.js",
-    "index.js"
+    "index.js",
+    "components/*"
   ],
   "repository": {
     "type": "git",
