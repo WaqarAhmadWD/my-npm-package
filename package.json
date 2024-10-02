@@ -26,6 +26,9 @@
     "ui-library",
     "customizable-ui"
   ],
+  "peerDependencies": {
+    "tailwindcss": "*"
+  },
   "author": "waqarahmad",
   "license": "ISC",
   "bugs": {
