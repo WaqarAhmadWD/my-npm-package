@@ -51,7 +51,18 @@ This package is in its early stages. Contributions and feedback are welcome! Let
    ```bash
    npm install vue3-dashboard-builder
 
-2. example of using all of them:
+2. Make sure to include path of vue3-dashboard-builder in tailwindcss configuration:
+   ```bash
+   // in tailwind.config.js
+    export default {
+      content: [
+        "./index.html",
+        "./src/**/*.{vue,js,ts,jsx,tsx}",
+        "./node_modules/vue3-dashboard-builder/**/*.{vue,js,ts,jsx,tsx}", // very important for styling
+      ],
+    };
+
+4. example of using all of them:
    ```bash
     <script setup>
     import { setting, FormD, MenuD, dataTable, makeRequest } from "vue3-dashboard-builder";
