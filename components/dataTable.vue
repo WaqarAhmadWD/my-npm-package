@@ -9,7 +9,7 @@
                 <div>
                     <div class="bg-gray-100 flex">
                         <div v-for="(col, index) in cols" :key="index" class="py-2 px-4 border-b w-full">
-                            <slot :name="`header-${col}`" :column="col">
+                            <slot :name="`header-${colFun(col)}`" :column="col">
                                 {{ col?.title ? col.title : col }}
                             </slot>
                         </div>
@@ -20,10 +20,9 @@
                         class="hover:bg-gray-50 flex justify-around items-center">
                         <div v-for="(col, colIndex) in cols" :key="colIndex"
                             :class="`py-2  px-4 border-b flex w-full text-center`">
-                            <slot :name="`cell-${col}`" :value="row[col]" :row="row" :column="col">
-                                {{ row[col?.field ? col.field : col]?.length > 200 / cols?.length ? row[col?.field ?
-                                    col.field :
-                                    col].slice(0, 200 / cols?.length) + "..." : row[col?.field ? col.field : col] }}
+                            <slot :name="`cell-${colFun(col)}`" :value="row[col]" :row="row" :column="col">
+                                {{ row[colFun(col)]?.length > 200 / cols?.length ? row[colFun(col)].slice(0, 200 /
+                                    cols?.length) + "..." : row[colFun(col)] }}
                             </slot>
                         </div>
                     </div>
@@ -60,6 +59,7 @@ const props = defineProps({
         default: () => []
     },
 })
+const colFun = (col) => col?.field ? col.field : col;
 </script>
 
 <style scoped>

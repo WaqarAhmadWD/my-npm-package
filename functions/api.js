@@ -20,7 +20,13 @@ const showMessage = (color, message, timer = 3000) => {
   // Create the toast element
   const toast = document.createElement("div");
   toast.classList.add("toast", `toast-${color}`);
-  toast.innerHTML = message;
+  toast.innerHTML = `
+  ${message}
+  <span class="close-icon cursor-pointer">&times;</span>
+  `;
+  toast.querySelector(".close-icon").addEventListener("click", () => {
+    toast.remove();
+  });
 
   // Append the toast to the container
   document.getElementById("toast-container").appendChild(toast);
@@ -46,11 +52,7 @@ export const makeRequest = async ({
   showMe = null,
 }) => {
   if (loading) {
-    showMessage(
-      "loading",
-      `<div class="flex gap-4 items-center"><div>Loading...</div></div>`,
-      null
-    );
+    showMessage("loading", `<span>Loading...</span>`, null);
   }
   if (throwMe) {
     showMessage("error", throwMe === true ? "Image is required" : throwMe);
