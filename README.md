@@ -21,6 +21,7 @@ A powerful and lightweight Vue 3 dashboard builder with TailwindCSS. Build moder
 - **REST API Handler**  
   - Effortlessly handle API requests with streamlined configuration.  
   - Centralized error handling for robust applications.
+  - loading, success and error messages are shown as a toaster notifications
 
 - **RTL & LTR Support**  
   - Switch between **Right-to-Left** (RTL) and **Left-to-Right** (LTR) effortlessly with a single button click.  
