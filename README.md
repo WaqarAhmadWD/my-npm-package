@@ -50,3 +50,7 @@ This package is in its early stages. Contributions and feedback are welcome! Let
 1. Install via npm:
    ```bash
    npm install vue3-dashboard-builder
+
+2. Import functions and components:
+   ```bash
+    import { setting, FormD, MenuD, dataTable, makeRequest } from "vue3-dashboard-builder";
