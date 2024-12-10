@@ -15,6 +15,5 @@ export const setting = (setting = null) => {
     document.body.classList.add("ltr");
   }
 };
-
-// import * from "/dynamic_components";
 export * from "./components";
+export * from "./functions";

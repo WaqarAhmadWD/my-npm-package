@@ -105,3 +105,30 @@ p {
     transform: translateY(0px);
   }
 }
+
+.toast-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.toast {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: opacity 0.3s ease;
+}
+
+.toast-success {
+  background-color: green;
+}
+
+.toast-error {
+  background-color: red;
+}
+
+.toast-loading {
+  background-color: orange;
+}
